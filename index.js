@@ -66,7 +66,7 @@ app.post('/api/users/:_id/exercises', async (req, res) => {
     const desc = req.body.description
     const dura = req.body.duration
     let date = req.body.date
-    if (new Date(date) === 'Invalid Date') {
+    if (String(new Date(date) === 'Invalid Date')) {
       date = new Date()
     } else {
       date = new Date(date)
@@ -96,14 +96,14 @@ app.get('/api/users/:_id/logs?', async (req, res) => {
     return res.status(404).json({ error: 'id not exist' })
   } else {
     let from = req.query.from
-    if (from !== undefined && new Date(from) !== 'Invalid Date') {
+    if (from !== undefined && String(new Date(from)) !== 'Invalid Date') {
       from = new Date(from)
     } else {
       from = new Date('0000')
     }
 
     let to = req.query.to
-    if (to !== undefined && new Date(to) !== 'Invalid Date') {
+    if (to !== undefined && String(new Date(to)) !== 'Invalid Date') {
       to = new Date(to)
     } else {
       to = new Date()
