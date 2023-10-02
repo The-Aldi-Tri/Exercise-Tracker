@@ -66,7 +66,7 @@ app.post('/api/users/:_id/exercises', async (req, res) => {
     const desc = req.body.description
     const dura = req.body.duration
     let date = req.body.date
-    if (String(new Date(date) === 'Invalid Date')) {
+    if (String(new Date(date)) === 'Invalid Date') {
       date = new Date()
     } else {
       date = new Date(date)
